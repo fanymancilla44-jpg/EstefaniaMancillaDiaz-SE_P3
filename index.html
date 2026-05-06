@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akinator One Piece</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="fondo-animado"></div>
+
+  <main class="contenedor">
+
+    <!-- PANTALLA DE INICIO -->
+    <section id="pantallaInicio" class="pantalla activa">
+      <h1>Akinator</h1>
+      <h2>One Piece Edition</h2>
+
+      <p>
+        Piensa en un personaje de One Piece.
+        El sistema te hara preguntas de si o no para intentar adivinarlo.
+      </p>
+
+      <button onclick="iniciarJuego()">Iniciar juego</button>
+    </section>
+
+    <!-- PANTALLA DE JUEGO -->
+    <section id="pantallaJuego" class="pantalla">
+      <div class="barra">
+        <span id="contadorPregunta">Pregunta 1</span>
+        <span id="contadorCandidatos">Analizando...</span>
+      </div>
+
+      <div class="tarjeta">
+        <h2 id="preguntaTexto">Pregunta aqui</h2>
+      </div>
+
+      <div class="botones">
+        <button onclick="responder('si')">Si</button>
+        <button onclick="responder('no')">No</button>
+      </div>
+
+      <button class="boton-secundario" onclick="reiniciarJuego()">Reiniciar</button>
+    </section>
+
+    <!-- PANTALLA DE RESULTADO -->
+    <section id="pantallaResultado" class="pantalla">
+      <h2>Creo que tu personaje es:</h2>
+
+      <h1 id="resultadoPersonaje">Personaje</h1>
+
+      <img id="imagenResultado" class="imagen-personaje" src="" alt="Imagen del personaje">
+
+      <p id="resultadoDescripcion"></p>
+      <p id="resultadoPuntaje"></p>
+
+      <div class="botones">
+        <button onclick="acierto()">Correcto</button>
+        <button onclick="fallo()">Incorrecto</button>
+      </div>
+    </section>
+
+    <!-- PANTALLA DE APRENDIZAJE -->
+    <section id="pantallaAprendizaje" class="pantalla">
+      <h1>Aprendizaje</h1>
+
+      <div id="formularioAprendizaje">
+        <p>
+          No adivine el personaje. Ayudame a aprenderlo para la siguiente partida.
+        </p>
+
+        <input type="text" id="nuevoPersonaje" placeholder="Nombre del personaje">
+
+        <textarea id="descripcionNuevo" placeholder="Descripcion corta del personaje"></textarea>
+
+        <label class="label-imagen">
+          Imagen del personaje:
+          <input type="file" id="imagenNuevo" accept="image/*">
+        </label>
+
+        <button onclick="iniciarAprendizaje()">Comenzar aprendizaje</button>
+      </div>
+
+      <div id="preguntasAprendizaje" class="oculto">
+        <p id="contadorAprendizaje">Pregunta de aprendizaje</p>
+
+        <div class="tarjeta">
+          <h2 id="preguntaAprendizajeTexto">Pregunta aqui</h2>
+        </div>
+
+        <div class="botones">
+          <button onclick="responderAprendizaje('si')">Si</button>
+          <button onclick="responderAprendizaje('no')">No</button>
+        </div>
+      </div>
+
+      <div id="preguntaUnicaAprendizaje" class="oculto">
+        <p>
+          Ahora escribe una pregunta unica que distinga a este personaje de los demas.
+        </p>
+
+        <textarea id="preguntaUnicaTexto" placeholder="Ejemplo: ¿Puede transformarse en dragon?"></textarea>
+
+        <button onclick="guardarPersonajeAprendido()">Guardar personaje aprendido</button>
+      </div>
+    </section>
+
+    <!-- PANTALLA FINAL -->
+    <section id="pantallaFinal" class="pantalla">
+      <h1>Fin del juego</h1>
+      <p id="mensajeFinal"></p>
+
+      <button onclick="reiniciarJuego()">Jugar otra vez</button>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
